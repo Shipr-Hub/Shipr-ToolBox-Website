@@ -1,0 +1,40 @@
+@charset "UTF-8";
+@font-face {font-family: devprops; src: url('../fonts/main.ttf')}
+
+body {
+	background-color: #36393e;
+	margin: 0;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 25%;
+	background-color: #2f3136;
+	position: fixed;
+	height: 100%;
+	overflow: auto;
+    color: white;
+}
+
+li a {
+	display: block;
+	color: #36393e;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+li a.active {
+    background-color: #36393e;
+    color: #8bdd7b;
+}
+
+li a:hover:not(.active) {
+	background-color: #36393e;
+	color: white;
+}
+
+a {font-family: devprops}
+a:link {color: white;}
+a:visited {color: white;}
