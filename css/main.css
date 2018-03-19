@@ -7,20 +7,20 @@ body {
 }
 
 ul {
+	background-color: #2f3136;
+	color: white;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	width: 25%;
-	background-color: #2f3136;
 	position: fixed;
 	height: 100%;
 	overflow: auto;
-    color: white;
 }
 
 li a {
-	display: block;
 	color: #36393e;
+	display: block;
 	padding: 8px 16px;
 	text-decoration: none;
 }
