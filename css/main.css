@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 @font-face {font-family: devprops; src: url('../fonts/main.ttf')}
 
 body {
@@ -35,6 +35,16 @@ li a:hover:not(.active) {
 	color: white;
 }
 
-a {font-family: devprops}
+font.main {
+    color: white;
+    font-family: devprops;
+}
+
+a.categ:hover {
+    color: #8bdd7b;
+    text-decoration: none;
+}
+
+a {font-family: devprops; text-decoration: none;}
 a:link {color: white;}
 a:visited {color: white;}
