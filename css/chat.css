@@ -1,0 +1,19 @@
+﻿input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: #2f3136;
+    color: white;
+}
+
+div.chat {
+    color: white;
+    background-color: #2f3136;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    margin: 8px 0;
+}
