@@ -56,3 +56,11 @@
 .default:hover {
         background: #e7e7e7;
 }
+
+/*updatewindow*/
+.updates {
+    border: 7px 14px;
+    border-color: #000000;
+    background-color: #2f3136; 
+    padding: 9px;
+}
