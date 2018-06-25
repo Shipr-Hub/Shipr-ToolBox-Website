@@ -14,32 +14,43 @@
 <body>
 
     <div class="desktop">
-        <ul class="sidenav-simple">
-            <li>
-                <a href="#" onclick="createWindow(100, 'eyedropper', 'Color Picker', 'windows/color-picker.html', 'color-picker')">
-                    <span class="mif-eyedropper icon"></span>
-                    <span class="title">Color Picker</span>
-                </a>
-            </li>
 
-            <li>
-                <a href="#" onclick="createWindowIframe(400, 'book-reference', 'DevDocs.io', 'https://devdocs.io/', 'devdocs')">
-                    <span class="mif-book-reference icon"></span>
-                    <span class="title">DevDocs.io</span>
-                </a>
-            </li>
+        <div class="grid fg-white h-100" style="margin:0 !important">
+            <div class="row h-100">
+                <div class="stub p-0 pl-3">
+                    <ul class="sidenav-simple fg-black">
+                        <li>
+                            <a href="#" onclick="createWindow(100, 'eyedropper', 'Color Picker', 'windows/color-picker.html', 'color-picker')">
+                                <span class="mif-eyedropper icon"></span>
+                                <span class="title">Color Picker</span>
+                            </a>
+                        </li>
 
-            <li>
-                <a href="#" onclick="createWindow(400, 'widgets', 'About', 'windows/welcome.html', 'welcome')">
-                    <span class="mif-widgets icon"></span>
-                    <span class="title">About</span>
-                </a>
-            </li>
-        </ul>
-        <div class="window-area bg-dark"></div>
+                        <li>
+                            <a href="#" onclick="createWindowIframe(400, 'book-reference', 'DevDocs.io', 'https://devdocs.io/', 'devdocs')">
+                                <span class="mif-book-reference icon"></span>
+                                <span class="title">DevDocs.io</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" onclick="createWindow(400, 'widgets', 'About', 'windows/welcome.html', 'welcome')">
+                                <span class="mif-widgets icon"></span>
+                                <span class="title">About</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cell p-0">
+                    <div class="window-area bg-dark h-100"></div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="task-bar">
             <div class="task-bar-section">
-                <button class="task-bar-item" onclick="toggleMenu();"> 
+                <button class="task-bar-item" onclick="toggleMenu();">
                     <span class="mif-apps"></span>
                 </button>
             </div>
