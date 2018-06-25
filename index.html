@@ -28,6 +28,13 @@
                     <span class="title">DevDocs.io</span>
                 </a>
             </li>
+
+            <li>
+                <a href="#" onclick="createWindow(400, 'widgets', 'About', 'windows/welcome.html', 'welcome')">
+                    <span class="mif-widgets icon"></span>
+                    <span class="title">About</span>
+                </a>
+            </li>
         </ul>
         <div class="window-area bg-dark"></div>
         <div class="task-bar">
@@ -46,6 +53,9 @@
     <script src="desktop.js"></script>
     <script src="bower_components/vue/dist/vue.js"></script>
     <script>
+        $(document).ready(function () {
+            createWindow(400, 'widgets', 'About', 'windows/welcome.html', 'welcome');
+        });
 
         function createWindow(width, icon, title, file, id) {
             Desktop.createWindow({
@@ -64,7 +74,7 @@
                 width: width,
                 icon: "<span class='mif-" + icon + "'></span>",
                 title: title,
-                content: "<div id=\"" + id + "_wrapper\" class=\"window_wrapper iframe_wrapper\"><iframe src=\"" + url + "\" frameborder=\"0\"></iframe></div>",
+                content: "<div id=\"" + id + "_wrapper\" class=\"window_wrapper no-overflow\"><iframe src=\"" + url + "\" frameborder=\"0\"></iframe></div>",
                 clsContent: "bg-dark"
             });
 
