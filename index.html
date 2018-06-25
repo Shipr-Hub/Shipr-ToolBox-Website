@@ -34,7 +34,7 @@
                         </li>
 
                         <li>
-                            <a href="#" onclick="createWindow(400, 'widgets', 'About', 'windows/welcome.html', 'welcome')">
+                            <a href="#" onclick="createWindow(400, 'widgets', 'About', 'windows/info.html', 'info')">
                                 <span class="mif-widgets icon"></span>
                                 <span class="title">About</span>
                             </a>
@@ -65,7 +65,7 @@
     <script src="bower_components/vue/dist/vue.js"></script>
     <script>
         $(document).ready(function () {
-            createWindow(400, 'widgets', 'About', 'windows/welcome.html', 'welcome');
+            createWindow(400, 'widgets', 'About', 'windows/info.html', 'info');
         });
 
         function createWindow(width, icon, title, file, id) {
@@ -88,8 +88,6 @@
                 content: "<div id=\"" + id + "_wrapper\" class=\"window_wrapper no-overflow\"><iframe src=\"" + url + "\" frameborder=\"0\"></iframe></div>",
                 clsContent: "bg-dark"
             });
-
-            $('#' + id + '_wrapper').load(file);
         }
 
         function toggleMenu() {
