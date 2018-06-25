@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link href="metro/css/metro-all.css?ver=@@b-version" rel="stylesheet">
+    <link href="desktop.css" rel="stylesheet">
+
+    <title>Maker ToolBox</title>
+</head>
+
+<body>
+
+    <div class="desktop">
+        <ul class="sidenav-simple">
+            <li>
+                <a href="#" onclick="createWindow(100, 'eyedropper', 'Color Picker', 'windows/color-picker.html', 'color-picker')">
+                    <span class="mif-eyedropper icon"></span>
+                    <span class="title">Color Picker</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" onclick="createWindowIframe(400, 'book-reference', 'DevDocs.io', 'https://devdocs.io/', 'devdocs')">
+                    <span class="mif-book-reference icon"></span>
+                    <span class="title">DevDocs.io</span>
+                </a>
+            </li>
+        </ul>
+        <div class="window-area bg-dark"></div>
+        <div class="task-bar">
+            <div class="task-bar-section">
+                <button class="task-bar-item" onclick="toggleMenu();"> 
+                    <span class="mif-apps"></span>
+                </button>
+            </div>
+
+            <div class="task-bar-section tasks"></div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="metro/js/metro.js"></script>
+    <script src="desktop.js"></script>
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <script>
+
+        function createWindow(width, icon, title, file, id) {
+            Desktop.createWindow({
+                width: width,
+                icon: "<span class='mif-" + icon + "'></span>",
+                title: title,
+                content: "<div id=\"" + id + "_wrapper\"></div>",
+                clsContent: "bg-dark"
+            });
+
+            $('#' + id + '_wrapper').load(file);
+        }
+
+        function createWindowIframe(width, icon, title, url, id) {
+            Desktop.createWindow({
+                width: width,
+                icon: "<span class='mif-" + icon + "'></span>",
+                title: title,
+                content: "<div id=\"" + id + "_wrapper\" class=\"window_wrapper iframe_wrapper\"><iframe src=\"" + url + "\" frameborder=\"0\"></iframe></div>",
+                clsContent: "bg-dark"
+            });
+
+            $('#' + id + '_wrapper').load(file);
+        }
+
+        function toggleMenu() {
+            $('.sidenav-simple').toggleClass('sidenav-simple-expand-md');
+        }
+
+    </script>
+</body>
+
+</html>

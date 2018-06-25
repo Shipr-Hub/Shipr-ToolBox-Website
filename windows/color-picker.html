@@ -1,0 +1,14 @@
+<script>
+  var app = new Vue({
+    el: '#color_picker',
+    data: {
+      input: '#ff0000'
+    }
+  })
+</script>
+
+<div id="color_picker" class="fg-white">
+  <span>Color ID: {{ input }}</span>
+  <br>
+  <input type="color" v-model="input">
+</div>
