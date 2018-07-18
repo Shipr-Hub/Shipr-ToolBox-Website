@@ -1,14 +1,29 @@
 <script>
-  var app = new Vue({
-    el: '#color_picker',
-    data: {
-      input: '#ff0000'
+    var colorpicker;
+    var defaultColor = "#000000";
+    window.addEventListener("load", startup, false);
+    function startup() {
+        colorpicker = document.querySelector("#colorpicker");
+        colorpicker.value = defaultColor;
+        colorpicker.addEventListener("input", updateFirst, false);
+        colorpicker.addEventListener("change", updateAll, false);
+        colorpicker.select();
     }
-  })
-</script>
+    function updateFirst(event) {
+        var font = document.querySelector("font");
 
+        if (font) {
+            font.innerHTML = "Color ID: " + event.target.value;
+        }
+    }
+    function updateAll(event) {
+        document.querySelectorAll("font").forEach(function (font) {
+            font.innerHTML = "Color ID: " + event.target.value;
+        });
+    }
+</script>
 <div id="color_picker" class="fg-white">
-  <span>Color ID: {{ input }}</span>
-  <br>
-  <input type="color" v-model="input">
+  <font style="color: white; font-family: Calibri;">Color ID: #000000</font>
+  <br /><br />
+  <input type="color" v-model="input" value="#0000" id="colorpicker">
 </div>

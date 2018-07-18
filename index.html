@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <link href="makertoolbox.ico" rel="icon" />
     <link href="metro/css/metro-all.css?ver=@@b-version" rel="stylesheet">
     <link href="desktop.css" rel="stylesheet">
 
@@ -20,21 +21,28 @@
                 <div class="stub p-0 pl-3">
                     <ul class="sidenav-simple fg-black">
                         <li>
-                            <a href="#" onclick="createWindow(100, 'eyedropper', 'Color Picker', 'windows/color-picker.html', 'color-picker')">
+                            <a href="#" onclick="createWindow(400, 'bubble', 'General Chat', 'windows/chat-general.html', 'general-chat')">
+                                <span class="mif-bubble icon"></span>
+                                <span class="title">General Chat</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" onclick="createWindowIframe(230, 'eyedropper', 'Color Picker', 'windows/color-picker.html', 'color-picker')">
                                 <span class="mif-eyedropper icon"></span>
                                 <span class="title">Color Picker</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#" onclick="createWindowIframe(400, 'book-reference', 'DevDocs.io', 'https://devdocs.io/', 'devdocs')">
-                                <span class="mif-book-reference icon"></span>
-                                <span class="title">DevDocs.io</span>
+                            <a href="#" onclick="createWindow(400, 'github', 'GitHub Projects', 'windows/repos.html', 'repos')">
+                                <span class="mif-github icon"></span>
+                                <span class="title">GitHub Projects</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#" onclick="createWindow(400, 'widgets', 'About', 'windows/info.html', 'info')">
+                            <a href="#" onclick="createWindow(700, 'widgets', 'About', 'windows/info.html', 'info')">
                                 <span class="mif-widgets icon"></span>
                                 <span class="title">About</span>
                             </a>
@@ -65,7 +73,7 @@
     <script src="bower_components/vue/dist/vue.js"></script>
     <script>
         $(document).ready(function () {
-            createWindow(400, 'widgets', 'About', 'windows/info.html', 'info');
+            createWindow(700, 'widgets', 'About', 'windows/info.html', 'info');
         });
 
         function createWindow(width, icon, title, file, id) {
