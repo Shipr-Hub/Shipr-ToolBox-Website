@@ -34,7 +34,7 @@
 .task-bar .task-bar-item {
   position: relative;
   display: block;
-  width: 48px;
+  width: 52px;
   height: 40px;
   margin: 0;
   padding: 0;
@@ -49,7 +49,7 @@
 }
 .task-bar .task-bar-item * {
   display: block;
-  margin: 8px 12px;
+  margin: 8px 14px;
   height: 24px;
   width: 24px;
   font-size: 18px;
