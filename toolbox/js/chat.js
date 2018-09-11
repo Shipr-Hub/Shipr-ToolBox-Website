@@ -1,10 +1,12 @@
- var config = {
-    apiKey: "AIzaSyDw5YEFrcJZfpHg-LOJvEb66QzlCiHLb6o",
-    authDomain: "chat-app-dc9d8.firebaseapp.com",
-    databaseURL: "https://chat-app-dc9d8.firebaseio.com",
-    storageBucket: "chat-app-dc9d8.appspot.com",
-};
-firebase.initializeApp(config);
+var config = {
+   apiKey: "AIzaSyAjm7RSPyLGEVu1o_OI7OZFtViZG7YmpXU",
+   authDomain: "maker-toolbox-dev.firebaseapp.com",
+   databaseURL: "https://maker-toolbox-dev.firebaseio.com",
+   projectId: "maker-toolbox-dev",
+   storageBucket: "maker-toolbox-dev.appspot.com",
+   messagingSenderId: "422309464789"
+ };
+ firebase.initializeApp(config);
 
 var chatData = firebase.database().ref();
 
@@ -29,7 +31,7 @@ function showMessage(msg) {
   var messageEl = $("<div/>").addClass("message");
   var senderEl = $("<span/>").text(messageSender + ": ");
   var contentEl = $("<span/>").text(messageContent);
-  
+
   messageEl.append(senderEl);
   messageEl.append(contentEl);
   $('#messages').append(messageEl);
