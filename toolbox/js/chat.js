@@ -7,7 +7,7 @@ var config = {
    messagingSenderId: "422309464789"
  };
  firebase.initializeApp(config);
- 
+ var ui = new firebaseui.auth.AuthUI(firebase.auth());
  ui.start('#firebaseui-auth-container', {
    signInOptions: [
      firebase.auth.EmailAuthProvider.PROVIDER_ID
