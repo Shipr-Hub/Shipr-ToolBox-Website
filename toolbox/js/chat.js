@@ -7,6 +7,13 @@ var config = {
    messagingSenderId: "422309464789"
  };
  firebase.initializeApp(config);
+ 
+ ui.start('#firebaseui-auth-container', {
+   signInOptions: [
+     firebase.auth.EmailAuthProvider.PROVIDER_ID
+   ],
+   // Other config options...
+ });
 
 var chatData = firebase.database().ref();
 
