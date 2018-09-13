@@ -1,14 +1,3 @@
-var config = {
-   apiKey: "AIzaSyAjm7RSPyLGEVu1o_OI7OZFtViZG7YmpXU",
-   authDomain: "maker-toolbox-dev.firebaseapp.com",
-   databaseURL: "https://maker-toolbox-dev.firebaseio.com",
-   projectId: "maker-toolbox-dev",
-   storageBucket: "maker-toolbox-dev.appspot.com",
-   messagingSenderId: "422309464789"
- };
- firebase.initializeApp(config);
-
-   
 var chatData = firebase.database().ref();
 
 function pushMessage(event) {
