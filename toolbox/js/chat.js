@@ -1,3 +1,4 @@
+<script data-main="scripts/main" src="scripts/require.js"></script>
 var firebase = require('firebase');
 var chatData = firebase.database().ref();
 
