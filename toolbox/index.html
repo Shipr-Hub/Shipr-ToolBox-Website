@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase-app.js"></script> 
-<script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link href="makertoolbox.ico" rel="icon" />
-    <link href="metro/css/metro-all.css?ver=@@b-version" rel="stylesheet">
-    <link href="desktop.css" rel="stylesheet">
+    <link href="mt.ico" rel="icon" />
+    <link href="metro/css/metro-all.css?ver=@@b-version" rel="stylesheet" />
+    <link href="desktop.css" rel="stylesheet" />
+	  <link href="font/fonts.css" rel="stylesheet" type="text/css" />
+	  <link href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" rel=stylesheet" type="text/css" />
+	  <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
 
     <title>Maker ToolBox</title>
 </head>
-
 <body>
-
     <div class="desktop">
-
         <div class="grid fg-white h-100" style="margin:0 !important">
             <div class="row h-100" style="margin-right:0">
                 <div class="stub pr-0">
@@ -50,15 +46,12 @@
                                 <span class="title">About</span>
                             </a>
                         </li>
-
                         <li>
-                            <a href="#" onclick="createWindow(700, 'widgets', 'Login', 'windows/login.html', 'Login')">
+                            <a href="#" onclick="createWindow(700, 'widgets', 'Login', 'windows/login.html', 'auth')">
                                 <span class="mif-widgets icon"></span>
                                 <span class="title">Login</span>
                             </a>
                         </li>
-
-
                     </ul>
                 </div>
                 <div class="cell p-0">
@@ -82,7 +75,7 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="metro/js/metro.js"></script>
     <script src="desktop.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>>
+    <script src="toolbox/bower_components/vue/dist/vue.js"></script>
     <script>
         $(document).ready(function () {
             createWindow(700, 'widgets', 'About', 'windows/about.html', 'about');
