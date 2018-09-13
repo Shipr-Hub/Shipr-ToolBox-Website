@@ -17,7 +17,7 @@
 </script>
 
 <script>
-/ Initialize the FirebaseUI Widget using Firebase.
+// Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 ui.start('#firebaseui-auth-container', {
   signInOptions: [
@@ -25,8 +25,6 @@ ui.start('#firebaseui-auth-container', {
   ],
   // Other config options...
 });
-
-/
 
 </script>
 
@@ -58,8 +56,6 @@ var uiConfig = {
   signInSuccessUrl: '<url-to-redirect-to-on-success>',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-
     firebase.auth.EmailAuthProvider.PROVIDER_ID
   ],
   // Terms of service url.
