@@ -8,23 +8,25 @@
        * TODO(DEVELOPER): Paste the initialization snippet from:
        * Firebase Console > Overview > Add Firebase to your web app. *
        ***************************************************************************************** -->
+       <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyAjm7RSPyLGEVu1o_OI7OZFtViZG7YmpXU",
+          authDomain: "maker-toolbox-dev.firebaseapp.com",
+          databaseURL: "https://maker-toolbox-dev.firebaseio.com",
+          projectId: "maker-toolbox-dev",
+          storageBucket: "maker-toolbox-dev.appspot.com",
+          messagingSenderId: "422309464789"
+        };
+        firebase.initializeApp(config);
+       </script>
+
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
-    <script>
-     // Initialize Firebase
-     var config = {
-       apiKey: "AIzaSyAjm7RSPyLGEVu1o_OI7OZFtViZG7YmpXU",
-       authDomain: "maker-toolbox-dev.firebaseapp.com",
-       databaseURL: "https://maker-toolbox-dev.firebaseio.com",
-       projectId: "maker-toolbox-dev",
-       storageBucket: "maker-toolbox-dev.appspot.com",
-       messagingSenderId: "422309464789"
-     };
-     firebase.initializeApp(config);
-    </script>
+
 
     <script type="text/javascript">
       // FirebaseUI config.
