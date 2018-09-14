@@ -1,0 +1,2 @@
+#!/bin/bash
+curl -sS -X GET -H "Accept: application/json" "http://api.icndb.com/jokes/random?firstName=Zach&lastName=Latta" | jq '.value.joke'

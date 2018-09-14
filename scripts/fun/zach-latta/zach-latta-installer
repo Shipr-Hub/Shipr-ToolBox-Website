@@ -1,0 +1,3 @@
+cd /usr/local/bin
+wget https://gist.githubusercontent.com/yhdesai/dd1ad1549e50347248a11e7c504097c6/raw/744cdac6c22352af31107d07a027757ebd164b63/zachlatta
+chmod +x zachlatta
