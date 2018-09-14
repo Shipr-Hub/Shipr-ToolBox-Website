@@ -19191,24 +19191,7 @@ textarea,
 .file,
 .input,
 .textarea,
-.select {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  position: relative;
-  border: 1px #d9d9d9 solid;
-  color: #1d1d1d;
-  width: 100%;
-  display: block;
-  padding: 0 .75rem;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Helvetica Neue", sans-serif;
-  font-size: 1rem;
-  height: 36px;
-  line-height: 36px;
-  background: #ffffff none;
-  background-clip: padding-box;
-  min-width: 0;
-}
+.select {}
 input[type=text]:focus,
 input[type=password]:focus,
 input[type=tel]:focus,
@@ -19248,9 +19231,7 @@ textarea:hover,
 .file:hover,
 .input:hover,
 .textarea:hover,
-.select:hover {
-  border-color: #c0c0c0;
-}
+.select:hover {}
 input[type=text]:focus,
 input[type=password]:focus,
 input[type=tel]:focus,
@@ -19288,10 +19269,7 @@ textarea.focused,
 .file.focused,
 .input.focused,
 .textarea.focused,
-.select.focused {
-  -webkit-box-shadow: 0 0 0 3px rgba(228, 228, 228, 0.45);
-          box-shadow: 0 0 0 3px rgba(228, 228, 228, 0.45);
-}
+.select.focused {}
 input[type=text]:disabled,
 input[type=password]:disabled,
 input[type=tel]:disabled,
