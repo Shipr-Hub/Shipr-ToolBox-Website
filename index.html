@@ -93,7 +93,7 @@
 
     <script>
         $(document).ready(function () {
-            createWindow(700, 'widgets', 'About', 'windows/about.html', 'about');
+        //    createWindow(700, 'widgets', 'About', 'windows/about.html', 'about');
         });
 
         function createWindow(width, icon, title, file, id) {
@@ -129,11 +129,12 @@
                          var url = window.location.pathname;
                         if (url === "/nanobrain.io"){
                            console.log("nanobrain detected");
-                           element = document.getElementById('nanobrain')
-                           if (element != null) {
-                             element.click();
-                             }
-                             else{console.log("element is null")}
+                            createWindowIframe(700, 'nanobrain', 'Nanobrain.io', 'https://nanobrain.io/index', 'nanobrain');
+                           // element = document.getElementById('nanobrain')
+                           // if (element != null) {
+                           //   element.click();
+                            // }
+                          //   else{console.log("element is null")}
                           // document.getElementById('nanobrain').click();
                    //       eventFire(document.getElementById('nanobrain'), 'click');
                  //       createWindowIframe(700, 'nanobrain', 'Nanobrain.io', 'https://nanobrain.io/index', 'nanobrain')
