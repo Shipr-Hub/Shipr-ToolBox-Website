@@ -1,0 +1,87 @@
+<div class="grid fg-white">
+    <h4>General Chat</h4>
+    <div id="messages" class="chat"></div>
+    <input type="text" id="nameInput" placeholder="Name">
+    <input type="text" id="messageInput" placeholder="Message">
+    <div id="firebaseui-auth-container"></div>
+    <script src="/__/firebase/5.4.1/firebase-app.js"></script>
+    <!-- <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script> -->
+    <script src="../js/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
+    <script text="text/javascript">
+
+
+       var config = {
+         apiKey: "AIzaSyAjm7RSPyLGEVu1o_OI7OZFtViZG7YmpXU",
+         authDomain: "maker-toolbox-dev.firebaseapp.com",
+         databaseURL: "https://maker-toolbox-dev.firebaseio.com",
+         projectId: "maker-toolbox-dev",
+         storageBucket: "maker-toolbox-dev.appspot.com",
+         messagingSenderId: "422309464789"
+       };
+       firebase.initializeApp(config);
+
+         </script>
+
+       <!-- Firebase App is always required and must be first -->
+
+       <script src="/__/firebase/5.4.1/firebase-auth.js"></script>
+       <script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+      
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+
+          firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        // tosUrl and privacyPolicyUrl accept either url string or a callback
+        // function.
+        // Terms of service url/callback.
+        tosUrl: '<your-tos-url>',
+        // Privacy policy url/callback.
+        privacyPolicyUrl: function() {
+          window.location.assign('<your-privacy-policy-url>');
+        }
+      };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+
+    <script src="/__/firebase/5.4.1/firebase-database.js"></script>
+    <!-- <script src="http://localhost:5000/js/chat.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+     var chatData = firebase.database().ref();
+
+    function pushMessage(event) {
+      if (event.keyCode == 13) {
+        var name = $('#nameInput').val();
+        var text = $('#messageInput').val();
+        chatData.push({name: name, text: text});
+        $('#messageInput').val('');
+      }
+    }
+
+    $('#messageInput').keypress(pushMessage);
+
+    chatData.on("child_added", showMessage);
+
+    function showMessage(msg) {
+      var message = msg.val();
+      var messageSender = message.name;
+      var messageContent = message.text;
+
+      var messageEl = $("<div/>").addClass("message");
+      var senderEl = $("<span/>").text(messageSender + ": ");
+      var contentEl = $("<span/>").text(messageContent);
+
+      messageEl.append(senderEl);
+      messageEl.append(contentEl);
+      $('#messages').append(messageEl);
+    }
+</script>
+</div>
