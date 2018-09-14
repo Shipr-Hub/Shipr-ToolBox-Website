@@ -1,6 +1,6 @@
 <html>
 <head>
-    <script>console.log(window.location.href);</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -13,8 +13,16 @@
     <script src="../js/firebaseui.js"></script>
     <script src="/__/firebase/5.4.1/firebase-auth.js"></script>
 
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="metro/js/metro.js"></script>
+    <script src="desktop.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
 
     <title>Maker ToolBox</title>
+
+
+
 </head>
 <body>
     <div class="desktop">
@@ -56,7 +64,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" onclick="createWindow(700, 'nanobrain', 'Nanobrain.io', 'https://cors.io?https://nanobrain.io/index', 'nanobrain')">
+                            <a href="#" id="nanobrain"  onclick="createWindowIframe(700, 'nanobrain', 'Nanobrain.io', 'https://nanobrain.io/index', 'nanobrain')">
                                 <span class="mif-widgets icon"></span>
                                 <span class="title">Nanobrain</span>
                             </a>
@@ -82,10 +90,7 @@
         </div>
     </div>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="metro/js/metro.js"></script>
-    <script src="desktop.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
     <script>
         $(document).ready(function () {
             createWindow(700, 'widgets', 'About', 'windows/about.html', 'about');
@@ -118,6 +123,23 @@
         }
 
     </script>
+
+    <script>
+                         console.log(window.location.pathname);
+                         var url = window.location.pathname;
+                        if (url === "/nanobrain.io"){
+                           console.log("nanobrain detected");
+                           element = document.getElementById('nanobrain')
+                           if (element != null) {
+                             element.click();
+                             }
+                             else{console.log("element is null")}
+                          // document.getElementById('nanobrain').click();
+                   //       eventFire(document.getElementById('nanobrain'), 'click');
+                 //       createWindowIframe(700, 'nanobrain', 'Nanobrain.io', 'https://nanobrain.io/index', 'nanobrain')
+
+                        }
+                         </script>
 </body>
 
 </html>
