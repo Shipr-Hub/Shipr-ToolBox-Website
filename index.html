@@ -139,16 +139,24 @@
     </script>
 
     <script>
-                         console.log(window.location.pathname);
                          var url = window.location.pathname;
                         if (url === "/nanobrain.io"){
                            console.log("nanobrain detected");
                             createWindowIframe(700, 'nanobrain', 'Nanobrain.io', 'https://nanobrain.io/index', 'nanobrain');}
-                          if (url === "/fun_zach"){
-                            createWindowIframe(700, 'zach', 'Zach Latta Jokes', 'scripts/fun/zach-latta/index.html', 'zach');
-                            }
+                          // if (url === "/fun_zach"){
+                          //   createWindowIframe(700, 'zach', 'Zach Latta Jokes', 'scripts/fun/zach-latta/index.html', 'zach');
+                          //   }
 
-                            //TODO If it starts with url, remove url, get url and load url
+                            if (url === "/fun_zach"){
+                              createWindowIframe(700, 'zach', 'Zach Latta Jokes', 'scripts/fun/zach-latta/index.html', 'zach');
+                              }
+
+                              if (url.startsWith("/url=") === true){
+                                var url = url.substr(5);
+                                console.log("this is the url: " + url);
+                                  createWindowIframe(700, 'chrome', 'Site Title', "www.google.com", 'urlsite');
+                              }
+
 
 
                          </script>
