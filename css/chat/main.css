@@ -1,0 +1,50 @@
+﻿@charset "UTF-8";
+@font-face {font-family: devprops; src: url('../fonts/main.ttf')}
+
+body {
+	background-color: #36393e;
+	margin: 0;
+}
+
+ul {
+	background-color: #2f3136;
+	color: white;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 25%;
+	position: fixed;
+	height: 100%;
+	overflow: auto;
+}
+
+li a {
+	color: #36393e;
+	display: block;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+li a.active {
+    background-color: #36393e;
+    color: #8bdd7b;
+}
+
+li a:hover:not(.active) {
+	background-color: #36393e;
+	color: white;
+}
+
+font.main {
+    color: white;
+    font-family: devprops;
+}
+
+a.categ:hover {
+    color: #8bdd7b;
+    text-decoration: none;
+}
+
+a {font-family: devprops; text-decoration: none;}
+a:link {color: white;}
+a:visited {color: white;}
