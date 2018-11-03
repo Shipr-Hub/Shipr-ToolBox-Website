@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "../Maker-ToolBox-Website",
+    "public": "../Shipr-ToolBox-Website",
     "ignore": [
       "firebase.json",
       "**/.*",
