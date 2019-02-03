@@ -1,58 +1,63 @@
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Shipr ToolBox</title>
-    <script src="/__/firebase/5.4.1/firebase-app.js"></script>
-    <!-- <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script> -->
-    <script src="../js/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
-    <script text="text/javascript">
 
+<head>
+  <meta charset="UTF-8">
+  <title>Shipr ToolBox</title>
+  <script src="/__/firebase/5.4.1/firebase-app.js"></script>
+  <script src="../js/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
 
-       var config = {
-         apiKey: "AIzaSyAjm7RSPyLGEVu1o_OI7OZFtViZG7YmpXU",
-         authDomain: "maker-toolbox-dev.firebaseapp.com",
-         databaseURL: "https://maker-toolbox-dev.firebaseio.com",
-         projectId: "maker-toolbox-dev",
-         storageBucket: "maker-toolbox-dev.appspot.com",
-         messagingSenderId: "422309464789"
-       };
-       firebase.initializeApp(config);
+  <!-- Firebase App is always required and must be first -->
 
-         </script>
+  <script src="/__/firebase/5.4.1/firebase-auth.js"></script>
+  <script type="text/javascript">
+    // FirebaseUI config.
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        // var displayName = user.displayName;
+        // var email = user.email;
+        // var emailVerified = user.emailVerified;
+        // var photoURL = user.photoURL;
+        // var isAnonymous = user.isAnonymous;
+        // var uid = user.uid;
+        // var providerData = user.providerData;
+        console.log(user);;
+        // ...
+      } else {
 
-       <!-- Firebase App is always required and must be first -->
+alert("login is starting");
 
-       <script src="/__/firebase/5.4.1/firebase-auth.js"></script>
-       <script type="text/javascript">
-      // FirebaseUI config.
-      var uiConfig = {
-        signInSuccessUrl: 'toolbox.shipr.tech',
-        signInOptions: [
-          // Leave the lines as is for the providers you want to offer your users.
+        var uiConfig = {
+          signInSuccessUrl: '',
+          signInOptions: [
+            // Leave the lines as is for the providers you want to offer your users.
+            firebase.auth.EmailAuthProvider.PROVIDER_ID
+          ],
+          // tosUrl and privacyPolicyUrl accept either url string or a callback
+          // function.
+          // Terms of service url/callback.
+          tosUrl: '<your-tos-url>',
+          // Privacy policy url/callback.
+          privacyPolicyUrl: function() {
+            window.location.assign('<your-privacy-policy-url>');
+          }
+        };
 
-          firebase.auth.EmailAuthProvider.PROVIDER_ID
-        ],
-        // tosUrl and privacyPolicyUrl accept either url string or a callback
-        // function.
-        // Terms of service url/callback.
-        tosUrl: '<your-tos-url>',
-        // Privacy policy url/callback.
-        privacyPolicyUrl: function() {
-          window.location.assign('<your-privacy-policy-url>');
-        }
-      };
+        // Initialize the FirebaseUI Widget using Firebase.
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
+      }
+    });
+  </script>
+</head>
 
-      // Initialize the FirebaseUI Widget using Firebase.
-      var ui = new firebaseui.auth.AuthUI(firebase.auth());
-      // The start method will wait until the DOM is loaded.
-      ui.start('#firebaseui-auth-container', uiConfig);
-    </script>
-  </head>
-  <body>
-    <!-- The surrounding HTML is left untouched by FirebaseUI.
+<body>
+  <!-- The surrounding HTML is left untouched by FirebaseUI.
          Your app may use that space for branding, controls and other customizations.-->
-    <h1>Welcome to Shipr ToolBox</h1>
-    <div id="firebaseui-auth-container"></div>
-  </body>
+  <h1>Welcome to Shipr ToolBox</h1>
+  <div id="firebaseui-auth-container"></div>
+</body>
+
 </html>
