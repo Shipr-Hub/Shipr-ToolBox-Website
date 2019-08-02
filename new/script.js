@@ -153,8 +153,10 @@ function addFavToolToView(favtool) {
   for (i = 0; i < fToolLen; i++) {
     console.log(favtool[i]);
     var favToolHolder = document.getElementById('favToolHolder');
-    var favTool = document.createElement('div');
+    var favTool = document.createElement('a');
     favTool.className = "col-sm";
+    favTool.href = "products?id=" + favtool[i].id;
+    favTool.target = "_blank";
     favTool.innerHTML = favtool[i].id;
     favToolHolder.appendChild(favTool);
   }
@@ -170,7 +172,7 @@ function addFavCatToView(favcat) {
     var favCatDiv = document.createElement("div");
     favCatDiv.id = favcat[i];
     favCatDiv.className = "card";
-    favCatDiv.innerHTML = "<div class=\"card-header\" id=\"heading" + favcat[i] + "\"> <h5 class=\"mb-0\"> <button class=\"btn btn-link\" data-toggle=\"collapse\" data-target=\"#collapse" + favcat[i] + "\"aria-expanded=\"true\" aria-controls=\"collapse" + favcat[i] + "\" id=" + favcat[i] + "catDropdownTitle" + "> </button>  </h5>    </div >  <div id =\"collapse" + favcat[i] + "\" class=\"collapse show\" aria-labelledby=\"heading" + favcat[i] + "\" data-parent=\"#favCatDropDown\"> <ul class=\"card-body\" id=" + favcat[i] + "FavCatBody>  </div></div>";
+    favCatDiv.innerHTML = "<div class=\"card-header\" id=\"heading" + favcat[i] + "\"> <h5 class=\"mb-0\"> <button class=\"btn btn-link\" data-toggle=\"collapse\" data-target=\"#collapse" + favcat[i] + "\"aria-expanded=\"true\" aria-controls=\"collapse" + favcat[i] + "\" id=" + favcat[i] + "catDropdownTitle" + "> </button>  </h5>    </div >  <div id =\"collapse" + favcat[i] + "\" class=\"collapse hide\" aria-labelledby=\"heading" + favcat[i] + "\" data-parent=\"#favCatDropDown\"> <div class=\"card-body list-group list-group-flush\" id=" + favcat[i] + "FavCatBody>  </div></div>";
     favCatDropDown.appendChild(favCatDiv);
     var favcatTitle = document.getElementById(favcat[i] + "catDropdownTitle");
     favcatTitle.innerHTML = favcat[i];
@@ -202,9 +204,12 @@ function addOptionToSelect(favCatID) {
   db.collection("cat").doc(favCatID).collection("products").get().then((querySnapshot) => {
     querySnapshot.forEach((favcatt) => {
 
-      var favCatLi = document.createElement("option");
+      var favCatLi = document.createElement("a");
       favCatLi.value = favcatt.id;
+      favCatLi.href = "products?id=" + favcatt.id;
+      favCatLi.target = "_blank";
       favCatLi.innerHTML = favcatt.id;
+      favCatLi.className = "list-group-item";
 
       var s = favCatID + "FavCatBody";
       var elemee = document.getElementById(s);
