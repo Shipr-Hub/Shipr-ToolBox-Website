@@ -24,13 +24,11 @@ window.onload = function (e) {
   }
 };
 
-
-
 var db = firebase.firestore();
 
 //Initialize Views
 function initViews() {
-  allCatSelectHolder = document.getElementById('allCatSelectHolder');
+  allCatSelectHolder = document.getElementById('allCatDropDown');
 }
 
 //Sign In
@@ -62,9 +60,7 @@ function signInListener() {
       onSignedInInitialize();
       uid = user.uid;
       document.getElementById('loader').style.display = 'none';
-      //  loadAllCatNamesFromFirebase();
-      //  setupFavToolAdapter();
-      //  setupPersonalToolAdapter();
+      loadAllCatNamesFromFirebase();
       loadFavCategoriesAndProducts();
       //  loadPersonalTool();
     } else {
@@ -92,42 +88,59 @@ function loadAllCatNamesFromFirebase() {
 
 // Create select dropdown of name "All Category" name
 function addAllCatNamesFromFirebaseToView(catId) {
-  allCatP = document.createElement('span');
-  allCatP.innerHTML = catId + " : ";
-  allCatSelectHolder.appendChild(allCatP);
 
-  allCatSelect = document.createElement("select");
-  allCatSelectHolder.appendChild(allCatSelect);
-  allCatSelectId = catId + "AllCatHolder"
-  allCatSelect.id = allCatSelectId;
+  var allCatDropDown = document.getElementById('allCatDropDown');
+
+  var allCatDiv = document.createElement("div");
+  allCatDiv.id = catId;
+  allCatDiv.className = "card";
+  allCatDiv.innerHTML = "<div class=\"card-header\" id=\"heading" + catId + "\"> <h5 class=\"mb-0\"> <button class=\"btn btn-link\" data-toggle=\"collapse\" data-target=\"#collapseall" + catId + "\"aria-expanded=\"true\" aria-controls=\"collapseall" + catId + "\" id=" + catId + "allcatDropdownTitle" + "> </button> </h5> </div> <div id =\"collapseall" + catId + "\" class=\"collapse hide\" aria-labelledby=\"heading" + catId + "\" data-parent=\"#allCatDropDown\"> <div class=\"card-body list-group list-group-flush\" id=" + catId + "AllCatBody>  </div></div>";
+  allCatDropDown.appendChild(allCatDiv);
+
+  var allcatTitle = document.getElementById(catId + "allcatDropdownTitle");
+  allcatTitle.innerHTML = catId;
+  loadAllCatChildNamesFromFirebase(catId);
 
 
-  linebreak = document.createElement("br");
-  allCatSelectHolder.appendChild(linebreak);
-
-  loadAllCatChildNamesFromFirebase(catId, allCatSelectId);
+  //loadAllCatChildNamesFromFirebase(catId, allCatSelectId);
   // TODO:     set onclick to open dropdown and load all child products at  db.collection("cat").document(docId).collection("products")
 }
 
 // Load "All Category Child" Documents from Firebase
-function loadAllCatChildNamesFromFirebase(docId, allCatSelectId) {
+function loadAllCatChildNamesFromFirebase(docId) {
 
   db.collection("cat").doc(docId).collection("products").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      addAllCatChildFromFirebaseToView(doc, allCatSelectId);
+      addAllCatChildFromFirebaseToView(doc, docId);
     });
   });
 }
 
 // Add "All Category Child" option to the select dropdown
-function addAllCatChildFromFirebaseToView(child, allCatSelectId) {
-  childid = child.id;
-  var allCatChildSelect = document.getElementById(allCatSelectId);
+function addAllCatChildFromFirebaseToView(child, parentId) {
 
-  var allCatLi = document.createElement("option");
-  allCatLi.value = childid;
-  allCatLi.innerHTML = childid;
-  allCatChildSelect.appendChild(allCatLi);
+  var allCatLi = document.createElement("a");
+  allCatLi.value = child.id;
+  allCatLi.href = "products?id=" + child.id;
+  allCatLi.target = "_blank";
+  allCatLi.innerHTML = child.id;
+  allCatLi.className = "list-group-item";
+
+  var s = parentId + "AllCatBody";
+  console.log(s);
+
+  var elemeee = document.getElementById(s);
+  elemeee.appendChild(allCatLi);
+
+
+  // childid = child.id;
+  // var allCatChildSelect = document.getElementById(allCatSelectId);
+
+  // var allCatLi = document.createElement("option");
+  // allCatLi.value = childid;
+  // allCatLi.innerHTML = childid;
+  // allCatChildSelect.appendChild(allCatLi);
+
   // TODO:         load dropdown childs and set onclick to open it in new page product view passing docId in parameter
 }
 
@@ -172,35 +185,19 @@ function addFavCatToView(favcat) {
     var favCatDiv = document.createElement("div");
     favCatDiv.id = favcat[i];
     favCatDiv.className = "card";
-    favCatDiv.innerHTML = "<div class=\"card-header\" id=\"heading" + favcat[i] + "\"> <h5 class=\"mb-0\"> <button class=\"btn btn-link\" data-toggle=\"collapse\" data-target=\"#collapse" + favcat[i] + "\"aria-expanded=\"true\" aria-controls=\"collapse" + favcat[i] + "\" id=" + favcat[i] + "catDropdownTitle" + "> </button>  </h5>    </div >  <div id =\"collapse" + favcat[i] + "\" class=\"collapse hide\" aria-labelledby=\"heading" + favcat[i] + "\" data-parent=\"#favCatDropDown\"> <div class=\"card-body list-group list-group-flush\" id=" + favcat[i] + "FavCatBody>  </div></div>";
+    favCatDiv.innerHTML = "<div class=\"card-header\" id=\"heading" + favcat[i] + "\"> <h5 class=\"mb-0\"> <button class=\"btn btn-link\" data-toggle=\"collapse\" data-target=\"#collapse" + favcat[i] + "\"aria-expanded=\"true\" aria-controls=\"collapse" + favcat[i] + "\" id=" + favcat[i] + "favcatDropdownTitle" + "> </button>  </h5>    </div >  <div id =\"collapse" + favcat[i] + "\" class=\"collapse hide\" aria-labelledby=\"heading" + favcat[i] + "\" data-parent=\"#favCatDropDown\"> <div class=\"card-body list-group list-group-flush\" id=" + favcat[i] + "FavCatBody>  </div></div>";
     favCatDropDown.appendChild(favCatDiv);
-    var favcatTitle = document.getElementById(favcat[i] + "catDropdownTitle");
+
+    var favcatTitle = document.getElementById(favcat[i] + "favcatDropdownTitle");
     favcatTitle.innerHTML = favcat[i];
-
-
-
-    console.log(favcat[i]);
-
-
-
-
-
-
-    // allCatP = document.createElement('span');
-    // allCatP.innerHTML = favcat[i] + " : ";
-    // favCatSelectHolder.appendChild(allCatP);
-    // var favCatSelect = document.createElement("select");
-    // favCatSelect.id = favcat[i];;
-    // favCatIDD = favcat[i];
-    // favCatSelectHolder.appendChild(favCatSelect);
     addOptionToSelect(favcat[i]);
-
-
   }
 
 }
 
 function addOptionToSelect(favCatID) {
+  console.log(favCatID);
+
   db.collection("cat").doc(favCatID).collection("products").get().then((querySnapshot) => {
     querySnapshot.forEach((favcatt) => {
 
