@@ -13,15 +13,17 @@ var allCatSelect;
 var uid;
 
 //Init views and handle Auth
-window.onload = function(e) {
+window.onload = function (e) {
   initViews();
   signInListener();
   if (firebase.auth().currentUser != null) {
-    authSetup();
-  } else {
     onSignedInInitialize();
+
+  } else {
+    authSetup();
   }
 };
+
 
 
 var db = firebase.firestore();
@@ -36,11 +38,11 @@ function authSetup() {
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
   var uiConfig = {
     callbacks: {
-      signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+      signInSuccessWithAuthResult: function (authResult, redirectUrl) {
         onSignedInInitialize();
         return false;
       },
-      uiShown: function() {
+      uiShown: function () {
         document.getElementById('loader').style.display = 'none';
       }
     },
@@ -54,16 +56,17 @@ function authSetup() {
 
 //SignIn Listener
 function signInListener() {
-  firebase.auth().onAuthStateChanged(function(user) {
+  firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
+      onSignedInInitialize();
       uid = user.uid;
       document.getElementById('loader').style.display = 'none';
-      loadAllCatNamesFromFirebase();
+      //  loadAllCatNamesFromFirebase();
       //  setupFavToolAdapter();
       //  setupPersonalToolAdapter();
       loadFavCategoriesAndProducts();
-      loadPersonalTool();
+      //  loadPersonalTool();
     } else {
       // No user is signed in.
     }
@@ -72,6 +75,7 @@ function signInListener() {
 var favCatIDD;
 //Signed In Initialize
 function onSignedInInitialize() {
+  document.getElementById("firebaseui-auth-container").innerHTML = "";
 
 }
 
@@ -131,7 +135,7 @@ function addAllCatChildFromFirebaseToView(child, allCatSelectId) {
 
 // Load "Favourite Category and Tools" from Firebase
 function loadFavCategoriesAndProducts() {
-  db.collection("users").doc(firebase.auth().currentUser.uid).get().then(function(doc) {
+  db.collection("users").doc(firebase.auth().currentUser.uid).get().then(function (doc) {
     if (doc.exists) {
 
       favtool = doc.get("favtool");
@@ -149,7 +153,8 @@ function addFavToolToView(favtool) {
   for (i = 0; i < fToolLen; i++) {
     console.log(favtool[i]);
     var favToolHolder = document.getElementById('favToolHolder');
-    var favTool = document.createElement('p');
+    var favTool = document.createElement('div');
+    favTool.className = "col-sm";
     favTool.innerHTML = favtool[i].id;
     favToolHolder.appendChild(favTool);
   }
@@ -160,15 +165,33 @@ function addFavCatToView(favcat) {
   fCatLen = favcat.length;
   for (i = 0; i < fCatLen; i++) {
 
-    var favCatSelectHolder = document.getElementById('favCatSelectHolder');
-    allCatP = document.createElement('span');
-    allCatP.innerHTML = favcat[i] + " : ";
-    favCatSelectHolder.appendChild(allCatP);
-    var favCatSelect = document.createElement("select");
-    favCatSelect.id = favcat[i];;
-    favCatIDD = favcat[i];
-    favCatSelectHolder.appendChild(favCatSelect);
-addOptionToSelect(favCatIDD);
+    var favCatDropDown = document.getElementById('favCatDropDown');
+
+    var favCatDiv = document.createElement("div");
+    favCatDiv.id = favcat[i];
+    favCatDiv.className = "card";
+    favCatDiv.innerHTML = "<div class=\"card-header\" id=\"heading" + favcat[i] + "\"> <h5 class=\"mb-0\"> <button class=\"btn btn-link\" data-toggle=\"collapse\" data-target=\"#collapse" + favcat[i] + "\"aria-expanded=\"true\" aria-controls=\"collapse" + favcat[i] + "\" id=" + favcat[i] + "catDropdownTitle" + "> </button>  </h5>    </div >  <div id =\"collapse" + favcat[i] + "\" class=\"collapse show\" aria-labelledby=\"heading" + favcat[i] + "\" data-parent=\"#favCatDropDown\"> <ul class=\"card-body\" id=" + favcat[i] + "FavCatBody>  </div></div>";
+    favCatDropDown.appendChild(favCatDiv);
+    var favcatTitle = document.getElementById(favcat[i] + "catDropdownTitle");
+    favcatTitle.innerHTML = favcat[i];
+
+
+
+    console.log(favcat[i]);
+
+
+
+
+
+
+    // allCatP = document.createElement('span');
+    // allCatP.innerHTML = favcat[i] + " : ";
+    // favCatSelectHolder.appendChild(allCatP);
+    // var favCatSelect = document.createElement("select");
+    // favCatSelect.id = favcat[i];;
+    // favCatIDD = favcat[i];
+    // favCatSelectHolder.appendChild(favCatSelect);
+    addOptionToSelect(favcat[i]);
 
 
   }
@@ -176,17 +199,16 @@ addOptionToSelect(favCatIDD);
 }
 
 function addOptionToSelect(favCatID) {
-  db.collection("cat").doc(favcat[i]).collection("products").get().then((querySnapshot) => {
+  db.collection("cat").doc(favCatID).collection("products").get().then((querySnapshot) => {
     querySnapshot.forEach((favcatt) => {
 
       var favCatLi = document.createElement("option");
       favCatLi.value = favcatt.id;
       favCatLi.innerHTML = favcatt.id;
 
-      //// TODO:  favCatSelect doesnt change
-      console.log("catname");
-      console.log(favCatIDD);
-      document.getElementById(favCatID).appendChild(favCatLi);
+      var s = favCatID + "FavCatBody";
+      var elemee = document.getElementById(s);
+      elemee.appendChild(favCatLi);
     });
   });
 
